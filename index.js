@@ -11,7 +11,7 @@ function nextCard() {
         cards[currentIndex - 1].classList.add('out');
         cards[currentIndex].classList.add('active');
     } else {
-        endSvap = true;
+        endSwap = true;
         currentIndex++;
         cards[currentIndex - 1].classList.add('out');
         cards[currentIndex].classList.add('active');
