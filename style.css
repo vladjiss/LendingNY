@@ -137,7 +137,7 @@ body {
 
 .card {
     position: absolute;
-    transform: scale(1%, 1%) rotate(-1deg);
+    transform: scale(1%, 1%);
     left: calc(50% - (38.8vh / 2));
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.08) 100%), url(img/desktop_bg.png), lightgray -43.858px -13.354px / 170.729% 105.2% no-repeat;
     background-size: 159%;
@@ -175,21 +175,12 @@ body {
 .card.active {
     /* animation: fadeInActive 0.5s; */
 
-    
+    transform: scale(100%, 100%);
     transition: 0.54s;
     visibility: visible;
     box-shadow: 0px 0px 16px 0px rgba(17, 67, 132, 0.60);
 
 
-}
-.card.active:nth-child(odd) {
-
-    transform: scale(100%, 100%) rotate(-1deg);
-
-}
-
-.card.active:nth-child(even) {
-    transform: scale(100%, 100%) rotate(1deg);
 }
 
 .card.active.left {
@@ -281,7 +272,15 @@ button:active {
     display: none;
 }
 
+/* .card:nth-child(odd) {
 
+    transform: rotate(-1deg);
+
+}
+
+.card:nth-child(even) {
+    transform: rotate(1deg);
+} */
 
 
 @media (min-device-width: 933px) {
