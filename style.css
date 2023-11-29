@@ -158,8 +158,8 @@ body {
 }
 
 
-.card.active.animate-out-left {
-    transform: translateX(-200%);
+.swipper .card.active.animate-out-left {
+    transform: translateX(-100%);
 }
 
 
@@ -272,15 +272,15 @@ button:active {
     display: none;
 }
 
-/* .card:nth-child(odd) {
+.card.active:nth-child(odd) {
 
     transform: rotate(-1deg);
 
 }
 
-.card:nth-child(even) {
+.card.active:nth-child(even) {
     transform: rotate(1deg);
-} */
+}
 
 
 @media (min-device-width: 933px) {
