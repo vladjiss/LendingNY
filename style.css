@@ -137,7 +137,7 @@ body {
 
 .card {
     position: absolute;
-    transform: scale(1%, 1%);
+    transform: scale(90%, 90%);
     left: calc(50% - (38.8vh / 2));
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.08) 100%), url(img/desktop_bg.png), lightgray -43.858px -13.354px / 170.729% 105.2% no-repeat;
     background-size: 159%;
@@ -153,9 +153,7 @@ body {
     transition: transform 0.5s ease;
 }
 
-.card.top {
-    z-index: 5;
-}
+
 
 
 .swipper .card.active.animate-out-left {
