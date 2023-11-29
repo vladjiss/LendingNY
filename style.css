@@ -136,20 +136,17 @@ body {
 }
 
 .card {
-
     position: absolute;
     transform: scale(1%, 1%);
     left: calc(50% - (38.8vh / 2));
-    background: url("img/desktop_bg.png") no-repeat;
-    background-size: cover;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.08) 100%), url(img/desktop_bg.png), lightgray -43.858px -13.354px / 170.729% 105.2% no-repeat;
+    background-size: 159%;
+    background-position: -35px -7px;
     width: 38.8vh;
     height: 66.7vh;
     margin: 10% auto 0;
-    padding: 1.5vh;
-    
+    padding: 2.2vh 1.9vh;
     border-radius: 40px;
-
-
 }
 
 .card {
