@@ -31,13 +31,15 @@ function handleTouchEnd() {
 
     if (swipeDirection === 'prev') {
         if (activeCardIndex > 0) {
-            cards[activeCardIndex].classList.add('animate-out-right');
-            setTimeout(() => {
-                cards[activeCardIndex].classList.remove('active', 'animate-out-right', 'left');
+            
+            
+                cards[activeCardIndex].classList.remove('active',  'left');
                 activeCardIndex--;
-                cards[activeCardIndex].classList.add('active');
-                cards[activeCardIndex].classList.add('left');
-            }, 250); // Задержка для анимации
+                cards[activeCardIndex].classList.add('active', 'left', 'top');
+                
+                cards[activeCardIndex + 1].classList.remove('top');
+                
+          
         }
     } else if (swipeDirection === 'next') {
         nextCard();
@@ -56,9 +58,9 @@ function nextCard() {
     if (activeCardIndex < cards.length - 1) {
         cards[activeCardIndex].classList.add('animate-out-left');
         setTimeout(() => {
-            cards[activeCardIndex].classList.remove('active', 'animate-out-left');
+            cards[activeCardIndex].classList.remove('active', 'animate-out-left', 'top');
             activeCardIndex++;
-            cards[activeCardIndex].classList.add('active');
+            cards[activeCardIndex].classList.add('active', 'top');
         }, 250); // Задержка 500ms для анимации
     } else {
         cards[activeCardIndex].classList.add('animate-out-left');
