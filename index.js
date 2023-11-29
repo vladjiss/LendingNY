@@ -1,41 +1,75 @@
-let currentIndex = 0;
-let startX = 0;
-let endX = 0;
-let endSwap = false;
+const swiper = document.querySelector('.swipper');
+const cards = Array.from(swiper.querySelectorAll('.card'));
 
-function nextCard() {
-    const cards = document.querySelectorAll('.card');
+let activeCardIndex = 0;
+cards[activeCardIndex].classList.add('active');
 
-    if (currentIndex < cards.length - 2) {
-        currentIndex++;
-        cards[currentIndex - 1].classList.add('out');
-        cards[currentIndex].classList.add('active');
-    } else {
-        endSwap = true;
-        currentIndex++;
-        cards[currentIndex - 1].classList.add('out');
-        cards[currentIndex].classList.add('active');
-        document.querySelector('.btn_next').classList.add('hidden');
-        document.querySelector('.btn_go').classList.remove('hidden');
-    }
-}
+swiper.addEventListener('touchstart', handleTouchStart, false);
+swiper.addEventListener('touchmove', handleTouchMove, false);
+swiper.addEventListener('touchend', handleTouchEnd, false);
 
+let initialX = null;
+let deltaX = null;
 
 function handleTouchStart(event) {
-    startX = event.touches[0].clientX;
+    initialX = event.touches[0].clientX;
 }
 
-function handleTouchEnd(event) {
-    endX = event.changedTouches[0].clientX;
-    if (startX - endX > 50) { // Порог для определения свайпа (можно настроить)
-        if (!endSwap) { 
-            nextCard();
+function handleTouchMove(event) {
+    if (!initialX) return;
+
+    deltaX = event.touches[0].clientX - initialX;
+
+
+    event.preventDefault();
+}
+
+function handleTouchEnd() {
+    if (!deltaX) return;
+
+    const swipeDirection = deltaX > 0 ? 'prev' : 'next';
+
+    if (swipeDirection === 'prev') {
+        if (activeCardIndex > 0) {
+            cards[activeCardIndex].classList.add('animate-out-right');
+            setTimeout(() => {
+                cards[activeCardIndex].classList.remove('active', 'animate-out-right', 'left');
+                activeCardIndex--;
+                cards[activeCardIndex].classList.add('active');
+                cards[activeCardIndex].classList.add('left');
+            }, 250); // Задержка для анимации
         }
+    } else if (swipeDirection === 'next') {
+        nextCard();
+    }
+
+    initialX = null;
+    deltaX = null;
+}
+
+function nextCard() {
+    if (activeCardIndex == cards.length - 2) {
+        document.querySelector('.btn_next').classList.add('hidden');
+        document.querySelector('.btn_go').classList.remove('hidden');
+        document.querySelector('.btn_go').addEventListener('click', goClicked);
+    }
+    if (activeCardIndex < cards.length - 1) {
+        cards[activeCardIndex].classList.add('animate-out-left');
+        setTimeout(() => {
+            cards[activeCardIndex].classList.remove('active', 'animate-out-left');
+            activeCardIndex++;
+            cards[activeCardIndex].classList.add('active');
+        }, 250); // Задержка 500ms для анимации
+    } else {
+        cards[activeCardIndex].classList.add('animate-out-left');
+        setTimeout(() => {
+            const pageUrl = document.querySelector('.btn_go').getAttribute('data-page-url');
+            window.location.href = pageUrl;
+        }, 500);
     }
 }
-
-// Добавляем обработчики событий touchstart и touchend к контейнеру, где расположены карточки
-const container = document.querySelector('.swipper');
-container.addEventListener('touchstart', handleTouchStart, false);
-container.addEventListener('touchend', handleTouchEnd, false);
-
+function goClicked() {
+    const goButton = document.querySelector('.btn_go');
+    const pageUrl = goButton.getAttribute('data-page-url');
+    window.location.href = pageUrl;
+}

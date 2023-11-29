@@ -130,56 +130,70 @@ body {
 }
 
 .swipper {
-    display: flex;
     height: 82%;
     width: 100%;
     overflow: hidden;
 }
 
 .card {
-    display: none;
+    visibility: hidden;
+    position: absolute;
+    left: 100%;
+    left: calc(50% - (38.8vh / 2));
     background: url("img/desktop_bg.png") no-repeat;
     background-size: cover;
-    width: 90%;
-    margin: 10% 5%;
+    width: 38.8vh;
+    height: 66.7vh;
+    margin: 10% auto 0;
     box-shadow: 0px 0px 16px 0px rgba(17, 67, 132, 0.60);
     border-radius: 40px;
-    flex: 0 0 auto;
+
 
 }
+.card {
+    transition: transform 0.5s ease;
+  }
+  
+  .card.active.animate-out-left {
+    transform: translateX(-200%);
+  }
+  
+  .card.active.animate-out-right {
+    transform: translateX(200%);
+  }
 
-.card.active.out {
-    animation: out 0.6s;
-    display: none;
+.card.out {
+    visibility: hidden;
+    transition: 0.2s;
+    /* left: -100%; */
 
 }
 
 
 .card.active {
-    animation: fadeInActive 0.6s;
-    display: block;
+    animation: fadeInActive 0.5s;
+    visibility: visible;
+
+
+}
+.card.active.left {
+    animation: fadeInActiveLeft 0.5s;
+    visibility: visible;
 
 
 }
 
 @keyframes fadeInActive {
     from {
-        margin-left: 100%;
+        left: 200%;
     }
 }
-
-@keyframes out {
+@keyframes fadeInActiveLeft {
     from {
-        display: block;
-
-    }
-
-    to {
-        margin-left: -95%;
-        display: none;
-
+        left: -200%;
     }
 }
+
 
 .display {
     width: 90%;
