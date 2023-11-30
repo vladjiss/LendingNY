@@ -11,6 +11,8 @@ swiper.addEventListener('touchend', handleTouchEnd, false);
 let initialX = null;
 let deltaX = null;
 
+const deltaXThreshold = 50;
+
 function handleTouchStart(event) {
     initialX = event.touches[0].clientX;
 }
@@ -25,29 +27,18 @@ function handleTouchMove(event) {
 }
 
 function handleTouchEnd() {
-    if (!deltaX) return;
+    if (!deltaX || Math.abs(deltaX) < deltaXThreshold) return;
 
     const swipeDirection = deltaX > 0 ? 'prev' : 'next';
 
     if (swipeDirection === 'prev') {
         if (activeCardIndex > 0) {
             cards[activeCardIndex].classList.remove('active', 'left');
-            setTimeout(() => {
-
-                cards[activeCardIndex - 1].style.zIndex = -cards[activeCardIndex - 1].style.zIndex;
-
-            }, 220);
-
-
-            setTimeout(() => {
-
-                activeCardIndex--;
-                cards[activeCardIndex].classList.add('active', 'left');
-
-            }, 250);
-
-
-
+          
+            activeCardIndex--;
+            cards[activeCardIndex].style.zIndex = -cards[activeCardIndex].style.zIndex;
+            cards[activeCardIndex].classList.add('active', 'left');
+        
         }
     } else if (swipeDirection === 'next') {
         nextCard();

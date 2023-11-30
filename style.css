@@ -157,7 +157,7 @@ body {
 
 
 .swipper .card.active.animate-out-left {
-    transform: translateX(-100%);
+    transform: translateX(-120%) rotate(-35deg);
 }
 
 
@@ -182,8 +182,9 @@ body {
 }
 
 .card.active.left {
-    animation: fadeInActiveLeft 0.5s;
+    animation: fadeInActiveLeft 1s ;
     visibility: visible;
+    transition: 0.54s;
 
 
 }
@@ -196,8 +197,13 @@ body {
 
 @keyframes fadeInActiveLeft {
     from {
-        left: -200%;
+        
+        transform: scale(50%, 50%) rotate(35deg);
     }
+    30% {
+        transform: translateX(120%) rotate(25deg);
+    }
+   
 }
 
 
