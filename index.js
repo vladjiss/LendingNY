@@ -64,6 +64,11 @@ function nextCard() {
             cards[activeCardIndex].classList.add('active');
         }, 250); // Задержка 500ms для анимации
     } else {
+        for (let i = 0; i < cards.length; i++) {
+            if( i != activeCardIndex) {
+                cards[i].classList.add('hidden');
+            }
+        }
         cards[activeCardIndex].classList.add('animate-out-left');
         setTimeout(() => {
             const pageUrl = document.querySelector('.btn_go').getAttribute('data-page-url');
