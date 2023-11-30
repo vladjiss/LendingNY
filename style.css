@@ -129,7 +129,7 @@ body {
 
 }
 
-.swipper {
+.swiper_container {
     height: 82%;
     width: 100%;
     overflow: hidden;
