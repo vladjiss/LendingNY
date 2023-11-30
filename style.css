@@ -182,7 +182,7 @@ body {
 }
 
 .card.active.left {
-    animation: fadeInActiveLeft 1s ;
+    animation: fadeInActiveLeft 0.9s ;
     visibility: visible;
     
 
@@ -200,8 +200,8 @@ body {
         
         transform: scale(50%, 50%) rotate(35deg);
     }
-    40% {
-        transform: translateX(100%) rotate(25deg);
+    50% {
+        transform: translateX(120%) rotate(25deg);
     }
    
 }
