@@ -171,10 +171,10 @@ body {
 
 
 .card.active {
-    /* animation: fadeInActive 0.5s; */
+    
 
     transform: scale(100%, 100%);
-    transition: 0.54s;
+    transition: 0.2s;
     visibility: visible;
     box-shadow: 0px 0px 16px 0px rgba(17, 67, 132, 0.60);
 
@@ -182,17 +182,11 @@ body {
 }
 
 .card.active.left {
-    animation: fadeInActiveLeft 0.9s ;
+    animation: fadeInActiveLeft 0.4s ;
     visibility: visible;
     
 
 
-}
-
-@keyframes fadeInActive {
-    from {
-        left: 200%;
-    }
 }
 
 @keyframes fadeInActiveLeft {
@@ -200,9 +194,10 @@ body {
         
         transform: scale(50%, 50%) rotate(35deg);
     }
-    50% {
+    10% {
         transform: translateX(120%) rotate(25deg);
     }
+    
    
 }
 
