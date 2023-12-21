@@ -41,6 +41,7 @@ function handleTouchEnd() {
         
         }
     } else if (swipeDirection === 'next') {
+        playMusic();
         nextCard();
     }
 
