@@ -81,3 +81,5 @@ function goClicked() {
     const pageUrl = goButton.getAttribute('data-page-url');
     window.location.href = pageUrl;
 }
+const music = document.getElementById('music');
+window.addEventListener("click", music.play());
