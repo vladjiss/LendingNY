@@ -41,6 +41,7 @@ function handleTouchEnd() {
         
         }
     } else if (swipeDirection === 'next') {
+        playMusic();
         nextCard();
     }
 
@@ -49,6 +50,7 @@ function handleTouchEnd() {
 }
 
 function nextCard() {
+    playMusic();
     if (activeCardIndex == cards.length - 2) {
         document.querySelector('.btn_next').classList.add('hidden');
         document.querySelector('.btn_go').classList.remove('hidden');
@@ -81,6 +83,9 @@ function goClicked() {
     const pageUrl = goButton.getAttribute('data-page-url');
     window.location.href = pageUrl;
 }
+function playMusic() {
+    const music = document.getElementById('music');
+    music.play();
+}
 
-
-
+window.addEventListener("click", playMusic());
