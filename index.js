@@ -81,3 +81,6 @@ function goClicked() {
     const pageUrl = goButton.getAttribute('data-page-url');
     window.location.href = pageUrl;
 }
+
+
+
